@@ -17,6 +17,26 @@ class HTMLNode():
         return props_string
     
     def __repr__(self):
-        return (self.tag, self.value, self.children, self.props)
+        return f"{str(self.tag)} {str(self.value)} {str(self.children)}  {str(self.props)}"
     
         
+class LeafNode(HTMLNode):
+    def __init__(self, tag="None", value="None", props="None"):
+        super().__init__()
+        self.tag = tag  #HTML Tag
+        self.value = value #Text inside the tag
+        self.props = props #Attributes of this tag
+
+    def to_html(self):
+        local_props = ""
+        if self.value == "None":
+            raise ValueError
+        if self.tag == "None":
+            return str(self.value)
+        if self.props == "None":
+            local_props = ""
+            return f"<{self.tag}{local_props}>{self.value}</{self.tag}>"
+        else:
+            for key,value in self.props.items():
+                local_props = local_props + str(key) + '=' + "\"" + str(value) + "\""
+                return f"<{self.tag} {local_props}>{self.value}</{self.tag}>"
