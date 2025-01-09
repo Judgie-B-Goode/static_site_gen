@@ -50,12 +50,12 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", TextType.BOLD, url="www.foo.com")
         self.assertNotEqual(node, node2)
 
-    def test_not_eq3(self):
+    def test_not_eq4(self):
         node = TextNode("This is a text node", TextType.BOLD, url="www.food.com")
         node2 = TextNode("This is a text node", TextType.BOLD, url="www.foo.com")
         self.assertNotEqual(node, node2)
 
-    def test_not_eq4(self):
+    def test_not_eq5(self):
         node = TextNode("This is a node", TextType.BOLD)
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertNotEqual(node, node2)
