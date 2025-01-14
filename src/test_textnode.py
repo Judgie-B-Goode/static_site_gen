@@ -60,10 +60,10 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", TextType.BOLD)
         self.assertNotEqual(node, node2)
 
-class TestTextNodeToHTMLNode(unittest.TestCase):
+class TestTextNodeToHTMLNode():
     def test_text(self):
         node = TextNode("This is a text node", TextType.TEXT)
-        html_node = text_node_to_html_node(node)
+        html_node = node.text_node_to_html_node(node)
         self.assertEqual(html_node.tag, None)
         self.assertEqual(html_node.value, "This is a text node")
 
