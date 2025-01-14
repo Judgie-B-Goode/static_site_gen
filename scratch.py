@@ -1,0 +1,36 @@
+import re
+
+def extract_markdown_images(text):
+    return re.findall(r"!\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
+
+def extract_markdown_links(text):
+    return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
+
+
+
+
+
+
+text = "This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and ![obi wan](https://i.imgur.com/fJRm4Vk.jpeg)"
+print(extract_markdown_images(text))
+# [("rick roll", "https://i.imgur.com/aKaOqIh.gif"), ("obi wan", "https://i.imgur.com/fJRm4Vk.jpeg")]
+
+
+text = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
+print(extract_markdown_links(text))
+# [("to boot dev", "https://www.boot.dev"), ("to youtube", "https://www.youtube.com/@bootdotdev")]
+
+
+# images
+r"!\[([^\[\]]*)\]\(([^\(\)]*)\)"
+
+# regular links
+r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)"
+
+
+
+
+
+#text = "I have a (cat) and a (dog)"
+#matches = re.findall(r"\((.*?)\)", text)
+#print(matches) # ['cat', 'dog']
