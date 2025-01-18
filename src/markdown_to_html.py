@@ -1,7 +1,7 @@
 from blockparse import markdown_to_blocks, block_to_blocktype
 from textnode import *
 from htmlnode import ParentNode
-from nodeparse import text_to_textnodes
+from inline_markdown import text_to_textnodes
 
 #markdown_to_blocks splits the markdown to individual blocks based on two newlines
 #block_to_blocktype identifies the type of each block
@@ -90,6 +90,6 @@ def text_to_children(text):
     text_nodes = text_to_textnodes(text)
     children = []
     for text_node in text_nodes:
-        html_node = TextNode(text,TextType.NORMAL).text_node_to_html_node(text_node)
+        html_node = text_node_to_html_node(TextNode(text,TextType.NORMAL))
         children.append(html_node)
     return children
